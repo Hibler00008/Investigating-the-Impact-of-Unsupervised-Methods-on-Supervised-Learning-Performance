@@ -5,4 +5,4 @@ Feature engineering strongly influences model success on tabular data. Prior stu
 
 This project investigates the effectiveness of integrating unsupervised clustering information as additional features to improve supervised learning model performance. The research explores whether cluster assignments generated from unsupervised algorithms can serve as meaningful features that enhance the predictive accuracy of various supervised learning models. The project aims to empirically validate the hypothesis that clustering-derived features capture hidden data structures that complement original features, leading to improved classification or regression performance.
 
- Datasets used: drive.google.com/drive/folders/1ghNPe6UPbTGpMgPvmKEPsOxWt0HVZ81m?usp=drive_link
+ Datasets used: https://drive.google.com/drive/folders/1ghNPe6UPbTGpMgPvmKEPsOxWt0HVZ81m?usp=drive_link
