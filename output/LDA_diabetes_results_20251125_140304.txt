@@ -1,0 +1,236 @@
+Output will be saved to: output/LDA_diabetes_results_20251125_140304.txt
+Timestamp: 20251125_140304
+======================================================================
+
+Dataset Shape: (768, 2)
+
+⚠️ Only 1 feature detected → Using Z-score method instead of Mahalanobis.
+
+Removed 4 outliers using Z-score.
+Computed class weights: {np.int64(0): np.float64(0.7663316582914573), np.int64(1): np.float64(1.4386792452830188)}
+
+✅ Preprocessing Complete!
+Training shape: (610, 1), Test shape: (154, 1)
+
+======================================================================
+PHASE 1: TRAINING BASELINE MODELS (PARALLEL)
+======================================================================
+
+######################################################################
+# Logistic Regression - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.01 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.7208
+  F1 Score:  0.7161
+  Precision: 0.7145
+  Recall:    0.7208
+
+######################################################################
+# Decision Tree - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# AdaBoost - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# Gradient Boosting - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# Random Forest - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.20 seconds
+
+Training Set Performance:
+  Accuracy:  0.8672
+  F1 Score:  0.8653
+  Precision: 0.8661
+  Recall:    0.8672
+
+Test Set Performance:
+  Accuracy:  0.7662
+  F1 Score:  0.7652
+  Precision: 0.7645
+  Recall:    0.7662
+
+######################################################################
+# XGBoost - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.01 seconds
+
+Training Set Performance:
+  Accuracy:  0.7689
+  F1 Score:  0.7720
+  Precision: 0.7792
+  Recall:    0.7689
+
+Test Set Performance:
+  Accuracy:  0.7338
+  F1 Score:  0.7385
+  Precision: 0.7535
+  Recall:    0.7338
+
+Training completed in 8.06 seconds
+
+Training Set Performance:
+  Accuracy:  0.8443
+  F1 Score:  0.8438
+  Precision: 0.8435
+  Recall:    0.8443
+
+Test Set Performance:
+  Accuracy:  0.7662
+  F1 Score:  0.7671
+  Precision: 0.7683
+  Recall:    0.7662
+
+######################################################################
+# Logistic Regression - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# AdaBoost - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+Training completed in 0.19 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.7208
+  F1 Score:  0.7161
+  Precision: 0.7145
+  Recall:    0.7208
+
+######################################################################
+# Decision Tree - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# Gradient Boosting - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# Random Forest - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+Tuning completed in 17.07 seconds
+Best CV score: 0.7689
+
+Best parameters:
+  criterion: gini
+  max_depth: 10
+  min_samples_leaf: 20
+  min_samples_split: 100
+
+Training Set Performance:
+  Accuracy:  0.7934
+  F1 Score:  0.7962
+  Precision: 0.8029
+  Recall:    0.7934
+
+Test Set Performance:
+  Accuracy:  0.7338
+  F1 Score:  0.7385
+  Precision: 0.7535
+  Recall:    0.7338
+
+######################################################################
+# XGBoost - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+Tuning completed in 9.83 seconds
+Best CV score: 0.7738
+
+Best parameters:
+  C: 0.1
+  penalty: l2
+  solver: saga
+
+Training Set Performance:
+  Accuracy:  0.7721
+  F1 Score:  0.7750
+  Precision: 0.7808
+  Recall:    0.7721
+
+Test Set Performance:
+  Accuracy:  0.7338
+  F1 Score:  0.7385
+  Precision: 0.7535
+  Recall:    0.7338
+
+######################################################################
+# Logistic Regression - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Coefficient Magnitude):
+feature  importance
+    LD1    1.348995
+
+######################################################################
+# AdaBoost - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+feature  importance
+    LD1         1.0
+
+######################################################################
+# Decision Tree - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+feature  importance
+    LD1         1.0
+
+######################################################################
+# Random Forest - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+feature  importance
+    LD1         1.0
+
+######################################################################
+# XGBoost - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+feature  importance
+    LD1         1.0
+
+######################################################################
+# Gradient Boosting - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+feature  importance
+    LD1         1.0

@@ -1,0 +1,722 @@
+Output will be saved to: D:\Books\TY\MP\minipoak\output\letter-recognition_results_20251128_100850.txt
+Timestamp: 20251128_100850
+======================================================================
+
+Dataset Shape: (20000, 17)
+Removed 394 outliers using Mahalanobis distance.
+Computed class weights: {np.int64(0): np.float64(0.9512373521882238), np.int64(1): np.float64(0.9807692307692307), np.int64(2): np.float64(1.0020547065622192), np.int64(3): np.float64(0.9248548062107385), np.int64(4): np.float64(0.9588350946178422), np.int64(5): np.float64(0.9452453058752271), np.int64(6): np.float64(0.9791692809637345), np.int64(7): np.float64(1.0208006279434851), np.int64(8): np.float64(0.9856006062902615), np.int64(9): np.float64(1.0475231574708015), np.int64(10): np.float64(0.9856006062902615), np.int64(11): np.float64(1.293600795755968), np.int64(12): np.float64(1.0190675199164163), np.int64(13): np.float64(0.9775745427211225), np.int64(14): np.float64(0.9888480547459131), np.int64(15): np.float64(0.9634522780590197), np.int64(16): np.float64(1.0020547065622192), np.int64(17): np.float64(1.0070986060918947), np.int64(18): np.float64(1.073758084491537), np.int64(19): np.float64(0.9712471994025392), np.int64(20): np.float64(0.9987200819147575), np.int64(21): np.float64(0.9904798172124905), np.int64(22): np.float64(1.022539640938278), np.int64(23): np.float64(0.949732229795521), np.int64(24): np.float64(1.0156188988676298), np.int64(25): np.float64(1.0420673076923077)}
+
+✅ Preprocessing Complete!
+Training shape: (15606, 16), Test shape: (4000, 16)
+
+======================================================================
+PHASE 1: TRAINING BASELINE MODELS (PARALLEL)
+======================================================================
+
+######################################################################
+# Decision Tree - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# Logistic Regression - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# AdaBoost - BASELINE
+######################################################################
+Training baseline model...
+
+[Progress: 1/6] Completed: Decision Tree
+======================================================================
+
+Training completed in 1.20 seconds
+
+Training Set Performance:
+  Accuracy:  0.7777
+  F1 Score:  0.7768
+  Precision: 0.7770
+  Recall:    0.7777
+
+Test Set Performance:
+  Accuracy:  0.7768
+  F1 Score:  0.7753
+  Precision: 0.7759
+  Recall:    0.7768
+
+######################################################################
+# Random Forest - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.24 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.8770
+  F1 Score:  0.8772
+  Precision: 0.8785
+  Recall:    0.8770
+
+######################################################################
+# XGBoost - BASELINE
+######################################################################
+Training baseline model...
+
+[Progress: 3/6] Completed: AdaBoost
+======================================================================
+
+Training completed in 3.52 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.9615
+  F1 Score:  0.9616
+  Precision: 0.9625
+  Recall:    0.9615
+
+[Progress: 4/6] Completed: Random Forest
+======================================================================
+
+Training completed in 7.08 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.9575
+  F1 Score:  0.9575
+  Precision: 0.9581
+  Recall:    0.9575
+
+######################################################################
+# Gradient Boosting - BASELINE
+######################################################################
+Training baseline model...
+
+[Progress: 2/6] Completed: Logistic Regression
+======================================================================
+
+Training completed in 1.01 seconds
+
+Training Set Performance:
+  Accuracy:  0.2648
+  F1 Score:  0.2459
+  Precision: 0.3353
+  Recall:    0.2648
+
+Test Set Performance:
+  Accuracy:  0.2685
+  F1 Score:  0.2489
+  Precision: 0.3533
+  Recall:    0.2685
+
+[Progress: 5/6] Completed: XGBoost
+======================================================================
+
+Training completed in 85.14 seconds
+
+Training Set Performance:
+  Accuracy:  0.9610
+  F1 Score:  0.9611
+  Precision: 0.9615
+  Recall:    0.9610
+
+Test Set Performance:
+  Accuracy:  0.9185
+  F1 Score:  0.9187
+  Precision: 0.9200
+  Recall:    0.9185
+
+[Progress: 6/6] Completed: Gradient Boosting
+======================================================================
+
+======================================================================
+BASELINE MODEL COMPARISON
+======================================================================
+              Model  Test Accuracy  Test F1  Train Time (s)
+      Decision Tree        0.87700 0.877203        0.239960
+Logistic Regression        0.77675 0.775282        1.196735
+           AdaBoost        0.26850 0.248905        1.006087
+      Random Forest        0.96150 0.961635        3.522296
+            XGBoost        0.95750 0.957524        7.079538
+  Gradient Boosting        0.91850 0.918705       85.136436
+
+======================================================================
+PHASE 2: HYPERPARAMETER TUNING WITH RANDOMIZED SEARCH (PARALLEL)
+======================================================================
+
+######################################################################
+# Decision Tree - HYPERPARAMETER TUNING (RANDOMIZED)
+######################################################################
+Tuning hyperparameters with RandomizedSearchCV (50 iterations)...
+Starting at: 10:10:19
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+Fitting 3 folds for each of 50 candidates, totalling 150 fits
+
+######################################################################
+# AdaBoost - HYPERPARAMETER TUNING (RANDOMIZED)
+######################################################################
+Tuning hyperparameters with RandomizedSearchCV (50 iterations)...
+Starting at: 10:10:29
+
+[Progress: 1/6] Completed tuning: Decision Tree
+======================================================================
+Fitting 3 folds for each of 16 candidates, totalling 48 fits
+[CV] END ................learning_rate=0.01, n_estimators=50; total time=   0.7s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   3.5s
+[CV] END ................learning_rate=0.01, n_estimators=50; total time=   0.7s
+[CV] END ................learning_rate=0.01, n_estimators=50; total time=   0.7s
+[CV] END .....................C=0.1, penalty=l1, solver=saga; total time=   2.8s
+[CV] END ...............learning_rate=0.01, n_estimators=100; total time=   1.5s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.3s
+[CV] END ...............learning_rate=0.01, n_estimators=100; total time=   1.6s
+[CV] END .......................C=1, penalty=l2, solver=saga; total time=   3.3s
+[CV] END ...............learning_rate=0.01, n_estimators=100; total time=   1.6s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.3s
+[CV] END .......................C=1, penalty=l2, solver=saga; total time=   3.0s
+[CV] END ...............learning_rate=0.01, n_estimators=200; total time=   3.2s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.2s
+[CV] END .......................C=1, penalty=l2, solver=saga; total time=   3.1s
+[CV] END ...............learning_rate=0.01, n_estimators=200; total time=   3.4s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   4.0s
+[CV] END ...............learning_rate=0.01, n_estimators=200; total time=   3.4s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   4.0s
+[CV] END .......................C=1, penalty=l1, solver=saga; total time=  10.5s
+[CV] END ...............learning_rate=0.01, n_estimators=300; total time=   5.3s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   4.2s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.3s
+[CV] END ...............learning_rate=0.01, n_estimators=300; total time=   5.0s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.3s
+[CV] END ...............learning_rate=0.01, n_estimators=300; total time=   4.7s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.0s
+[CV] END .................learning_rate=0.1, n_estimators=50; total time=   0.8s
+[CV] END .................learning_rate=0.1, n_estimators=50; total time=   0.7s
+[CV] END .................learning_rate=0.1, n_estimators=50; total time=   0.7s
+[CV] END .......................C=1, penalty=l1, solver=saga; total time=  13.3s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=100, n_estimators=200; total time=   3.0s
+[CV] END ................learning_rate=0.1, n_estimators=100; total time=   1.7s
+[CV] END ................learning_rate=0.1, n_estimators=100; total time=   1.5s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=100, n_estimators=200; total time=   2.8s
+[CV] END ................learning_rate=0.1, n_estimators=100; total time=   1.6s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=100, n_estimators=200; total time=   3.0s
+[CV] END ................learning_rate=0.1, n_estimators=200; total time=   3.3s
+[CV] END ................learning_rate=0.1, n_estimators=200; total time=   3.1s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.9s
+[CV] END .......................C=1, penalty=l1, solver=saga; total time=  12.2s
+[CV] END ................learning_rate=0.1, n_estimators=200; total time=   3.3s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.9s
+[CV] END ......................C=10, penalty=l2, solver=saga; total time=   5.2s
+[CV] END ................learning_rate=0.1, n_estimators=300; total time=   4.7s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.9s
+[CV] END ......................C=10, penalty=l2, solver=saga; total time=   4.7s
+[CV] END ................learning_rate=0.1, n_estimators=300; total time=   4.9s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=300; total time=   3.9s
+[CV] END ......................C=10, penalty=l2, solver=saga; total time=   4.8s
+[CV] END ................learning_rate=0.1, n_estimators=300; total time=   5.2s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=300; total time=   4.0s
+[CV] END .................learning_rate=0.5, n_estimators=50; total time=   0.9s
+[CV] END .................learning_rate=0.5, n_estimators=50; total time=   0.8s
+[CV] END .................learning_rate=0.5, n_estimators=50; total time=   0.7s
+[CV] END ................learning_rate=0.5, n_estimators=100; total time=   1.7s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=300; total time=   4.1s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END ................learning_rate=0.5, n_estimators=100; total time=   1.7s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END ................learning_rate=0.5, n_estimators=100; total time=   1.6s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END ......................C=10, penalty=l1, solver=saga; total time=  12.3s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=200; total time=   2.7s
+[CV] END ................learning_rate=0.5, n_estimators=200; total time=   3.5s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=200; total time=   2.7s
+[CV] END ................learning_rate=0.5, n_estimators=200; total time=   3.4s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=200; total time=   2.9s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.4s
+[CV] END ................learning_rate=0.5, n_estimators=200; total time=   3.6s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.4s
+[CV] END ......................C=10, penalty=l1, solver=saga; total time=  10.0s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.6s
+[CV] END ................learning_rate=0.5, n_estimators=300; total time=   5.0s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=50, n_estimators=200; total time=   2.5s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=50, n_estimators=200; total time=   2.5s
+[CV] END ................learning_rate=0.5, n_estimators=300; total time=   5.0s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=50, n_estimators=200; total time=   2.7s
+[CV] END ......................C=10, penalty=l1, solver=saga; total time=  10.6s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.3s
+[CV] END ................learning_rate=0.5, n_estimators=300; total time=   4.8s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.5s
+[CV] END .................learning_rate=1.0, n_estimators=50; total time=   0.8s
+[CV] END .................learning_rate=1.0, n_estimators=50; total time=   0.7s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END .................learning_rate=1.0, n_estimators=50; total time=   0.8s
+[CV] END .....................C=100, penalty=l2, solver=saga; total time=   5.7s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END ................learning_rate=1.0, n_estimators=100; total time=   2.1s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.7s
+[CV] END ................learning_rate=1.0, n_estimators=100; total time=   1.5s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END ................learning_rate=1.0, n_estimators=100; total time=   1.6s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END .....................C=100, penalty=l2, solver=saga; total time=   5.4s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END ................learning_rate=1.0, n_estimators=200; total time=   3.4s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END .....................C=100, penalty=l2, solver=saga; total time=   5.1s
+[CV] END ................learning_rate=1.0, n_estimators=200; total time=   3.3s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.5s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.5s
+[CV] END ................learning_rate=1.0, n_estimators=200; total time=   3.4s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.6s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=200, n_estimators=300; total time=   4.3s
+[CV] END .....................C=100, penalty=l1, solver=saga; total time=   9.4s
+[CV] END ................learning_rate=1.0, n_estimators=300; total time=   5.3s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=200, n_estimators=300; total time=   4.2s
+[CV] END ................learning_rate=1.0, n_estimators=300; total time=   5.1s
+[CV] END .....................C=100, penalty=l1, solver=saga; total time=   8.4s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=200, n_estimators=300; total time=   4.4s
+[CV] END ................learning_rate=1.0, n_estimators=300; total time=   5.2s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   3.9s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   3.6s
+[CV] END .....................C=100, penalty=l1, solver=saga; total time=   7.9s
+
+Tuning completed in 139.84 seconds
+Finished at: 10:12:51
+Best CV score: 0.5001
+
+Best parameters:
+  n_estimators: 300
+  learning_rate: 0.5
+
+Training Set Performance:
+  Accuracy:  0.5124
+  F1 Score:  0.5066
+  Precision: 0.5362
+  Recall:    0.5124
+
+Test Set Performance:
+  Accuracy:  0.5070
+  F1 Score:  0.5019
+  Precision: 0.5353
+  Recall:    0.5070
+
+######################################################################
+# Logistic Regression - HYPERPARAMETER TUNING (RANDOMIZED)
+######################################################################
+Tuning hyperparameters with RandomizedSearchCV (50 iterations)...
+Starting at: 10:10:19
+
+######################################################################
+# Random Forest - HYPERPARAMETER TUNING (RANDOMIZED)
+######################################################################
+Tuning hyperparameters with RandomizedSearchCV (50 iterations)...
+Starting at: 10:10:19
+Fitting 3 folds for each of 50 candidates, totalling 150 fits
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END .....................C=0.1, penalty=l2, solver=saga; total time=   1.1s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END .....................C=0.1, penalty=l2, solver=saga; total time=   1.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END .....................C=0.1, penalty=l2, solver=saga; total time=   1.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   3.5s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=50; total time=   0.1s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=30, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END .....................C=0.1, penalty=l1, solver=saga; total time=   3.1s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=50, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=20, min_samples_split=100; total time=   0.0s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=100, min_samples_split=100, n_estimators=300; total time=   3.4s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=20, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=30, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=10, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=50, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=20, min_samples_leaf=100, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=entropy, max_depth=None, min_samples_leaf=100, min_samples_split=100; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=20, min_samples_leaf=100, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=gini, max_depth=None, min_samples_leaf=20, min_samples_split=50; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+[CV] END .....................C=0.1, penalty=l1, solver=saga; total time=   2.8s
+[CV] END criterion=entropy, max_depth=10, min_samples_leaf=50, min_samples_split=200; total time=   0.0s
+
+Tuning completed in 9.67 seconds
+Finished at: 10:10:29
+Best CV score: 0.7333
+
+Best parameters:
+  min_samples_split: 50
+  min_samples_leaf: 20
+  max_depth: 30
+  criterion: gini
+
+Training Set Performance:
+  Accuracy:  0.7894
+  F1 Score:  0.7899
+  Precision: 0.7931
+  Recall:    0.7894
+
+Test Set Performance:
+  Accuracy:  0.7698
+  F1 Score:  0.7707
+  Precision: 0.7745
+  Recall:    0.7698
+
+######################################################################
+# XGBoost - HYPERPARAMETER TUNING (RANDOMIZED)
+######################################################################
+Tuning hyperparameters with RandomizedSearchCV (50 iterations)...
+Starting at: 10:13:04
+
+[Progress: 3/6] Completed tuning: Logistic Regression
+======================================================================
+Fitting 3 folds for each of 50 candidates, totalling 150 fits
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.3s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.5s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.5s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=100; total time=   1.1s
+[CV] END colsample_bytree=1.0, gamma=0.2, learning_rate=0.2, max_depth=7, n_estimators=200, reg_alpha=1.0, reg_lambda=1, subsample=0.8; total time=  10.0s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.1s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.1s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.1s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=100; total time=   1.5s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END colsample_bytree=1.0, gamma=0.2, learning_rate=0.2, max_depth=7, n_estimators=200, reg_alpha=1.0, reg_lambda=1, subsample=0.8; total time=  10.2s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=200; total time=   2.8s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=200; total time=   2.8s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=200; total time=   2.8s
+[CV] END colsample_bytree=1.0, gamma=0.2, learning_rate=0.2, max_depth=7, n_estimators=200, reg_alpha=1.0, reg_lambda=1, subsample=0.8; total time=  10.0s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.1s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.1s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.6s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.1, max_depth=3, n_estimators=300, reg_alpha=1.0, reg_lambda=2, subsample=0.8; total time=  16.7s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.6s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.6s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=200; total time=   2.2s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=200; total time=   2.3s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.1, max_depth=3, n_estimators=300, reg_alpha=1.0, reg_lambda=2, subsample=0.8; total time=  16.7s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=100; total time=   1.4s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=20, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.1, max_depth=3, n_estimators=300, reg_alpha=1.0, reg_lambda=2, subsample=0.8; total time=  16.6s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.5s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.7s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.6s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.1, max_depth=7, n_estimators=300, reg_alpha=1.0, reg_lambda=5, subsample=1.0; total time=  16.2s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=20, min_samples_split=50, n_estimators=300; total time=   4.6s
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   3.2s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.4s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=200; total time=   2.5s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.2s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.2s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=100, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.1, max_depth=7, n_estimators=300, reg_alpha=1.0, reg_lambda=5, subsample=1.0; total time=  16.7s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=300; total time=   3.5s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.1, max_depth=7, n_estimators=300, reg_alpha=1.0, reg_lambda=5, subsample=1.0; total time=  15.8s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=300; total time=   3.5s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=300; total time=   3.5s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=300; total time=   4.3s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.2, max_depth=5, n_estimators=300, reg_alpha=0.1, reg_lambda=5, subsample=1.0; total time=  14.4s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=300; total time=   4.3s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=20, min_samples_split=100, n_estimators=300; total time=   4.4s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.1s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.1s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=200; total time=   3.1s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.2, max_depth=5, n_estimators=300, reg_alpha=0.1, reg_lambda=5, subsample=1.0; total time=  14.5s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=50, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.1s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=None, max_features=sqrt, min_samples_leaf=100, min_samples_split=200, n_estimators=100; total time=   1.2s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=20, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=100; total time=   1.3s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=100; total time=   1.5s
+[CV] END colsample_bytree=1.0, gamma=0, learning_rate=0.2, max_depth=5, n_estimators=300, reg_alpha=0.1, reg_lambda=5, subsample=1.0; total time=  14.3s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=100; total time=   1.4s
+[CV] END max_depth=30, max_features=log2, min_samples_leaf=20, min_samples_split=50, n_estimators=100; total time=   1.5s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=200; total time=   2.2s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=200; total time=   2.4s
+[CV] END max_depth=20, max_features=sqrt, min_samples_leaf=100, min_samples_split=100, n_estimators=200; total time=   2.3s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=200; total time=   2.7s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=200; total time=   2.7s
+[CV] END colsample_bytree=0.8, gamma=0, learning_rate=0.05, max_depth=7, n_estimators=300, reg_alpha=0.1, reg_lambda=2, subsample=1.0; total time=  16.8s
+[CV] END max_depth=None, max_features=log2, min_samples_leaf=50, min_samples_split=50, n_estimators=200; total time=   2.7s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=200; total time=   2.7s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=200; total time=   2.7s
+[CV] END max_depth=30, max_features=sqrt, min_samples_leaf=50, min_samples_split=100, n_estimators=200; total time=   2.7s
+
+Tuning completed in 370.74 seconds
+Finished at: 10:16:31
+Best CV score: 0.8540
+
+Best parameters:
+  n_estimators: 300
+  min_samples_split: 50
+  min_samples_leaf: 20
+  max_features: sqrt
+  max_depth: 30
+
+Training Set Performance:
+  Accuracy:  0.9091
+  F1 Score:  0.9097
+  Precision: 0.9134
+  Recall:    0.9091
+
+Test Set Performance:
+  Accuracy:  0.8842
+  F1 Score:  0.8849
+  Precision: 0.8916
+  Recall:    0.8842
+
+[Progress: 5/6] Completed tuning: XGBoost
+======================================================================
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=200, n_estimators=200, subsample=0.8; total time= 2.4min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=200, n_estimators=200, subsample=0.8; total time= 2.9min
+[CV] END learning_rate=0.01, max_depth=5, min_samples_split=100, n_estimators=100, subsample=0.8; total time= 1.5min
+[CV] END learning_rate=0.01, max_depth=5, min_samples_split=100, n_estimators=100, subsample=0.8; total time= 1.5min
+[CV] END learning_rate=0.01, max_depth=5, min_samples_split=100, n_estimators=100, subsample=0.8; total time= 1.5min
+[CV] END learning_rate=0.2, max_depth=7, min_samples_split=100, n_estimators=100, subsample=0.8; total time= 2.0min
+[CV] END learning_rate=0.2, max_depth=7, min_samples_split=100, n_estimators=100, subsample=0.8; total time= 2.0min
+[CV] END learning_rate=0.2, max_depth=7, min_samples_split=100, n_estimators=100, subsample=0.8; total time= 2.0min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 7.4min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 7.4min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 7.4min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=200, n_estimators=100, subsample=0.8; total time= 2.0min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=200, n_estimators=100, subsample=0.8; total time= 2.0min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=200, n_estimators=100, subsample=0.8; total time= 2.0min
+[CV] END learning_rate=0.01, max_depth=5, min_samples_split=200, n_estimators=100, subsample=0.8; total time= 1.4min
+[CV] END learning_rate=0.01, max_depth=5, min_samples_split=200, n_estimators=100, subsample=0.8; total time= 1.4min
+[CV] END learning_rate=0.01, max_depth=5, min_samples_split=200, n_estimators=100, subsample=0.8; total time= 1.5min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=100, n_estimators=200, subsample=1.0; total time= 3.5min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=100, n_estimators=200, subsample=1.0; total time= 3.5min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=100, n_estimators=200, subsample=1.0; total time= 3.5min
+[CV] END learning_rate=0.1, max_depth=3, min_samples_split=200, n_estimators=100, subsample=0.8; total time=  54.2s
+[CV] END learning_rate=0.1, max_depth=3, min_samples_split=200, n_estimators=100, subsample=0.8; total time=  54.0s
+[CV] END learning_rate=0.1, max_depth=3, min_samples_split=200, n_estimators=100, subsample=0.8; total time=  53.5s
+[CV] END learning_rate=0.1, max_depth=5, min_samples_split=200, n_estimators=300, subsample=0.8; total time= 4.3min
+[CV] END learning_rate=0.1, max_depth=5, min_samples_split=200, n_estimators=300, subsample=0.8; total time= 4.4min
+[CV] END learning_rate=0.1, max_depth=5, min_samples_split=200, n_estimators=300, subsample=0.8; total time= 4.4min
+[CV] END learning_rate=0.2, max_depth=7, min_samples_split=100, n_estimators=100, subsample=1.0; total time= 2.4min
+[CV] END learning_rate=0.2, max_depth=7, min_samples_split=100, n_estimators=100, subsample=1.0; total time= 2.5min
+[CV] END learning_rate=0.2, max_depth=7, min_samples_split=100, n_estimators=100, subsample=1.0; total time= 2.4min
+[CV] END learning_rate=0.1, max_depth=7, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 6.1min
+[CV] END learning_rate=0.1, max_depth=7, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 6.0min
+[CV] END learning_rate=0.1, max_depth=7, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 6.1min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 6.2min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 6.2min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 6.1min
+[CV] END learning_rate=0.01, max_depth=7, min_samples_split=100, n_estimators=200, subsample=1.0; total time= 5.0min
+[CV] END learning_rate=0.01, max_depth=7, min_samples_split=100, n_estimators=200, subsample=1.0; total time= 5.0min
+[CV] END learning_rate=0.01, max_depth=7, min_samples_split=100, n_estimators=200, subsample=1.0; total time= 4.5min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 3.8min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 4.3min
+[CV] END learning_rate=0.05, max_depth=7, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 4.3min
+[CV] END learning_rate=0.2, max_depth=5, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 4.4min
+[CV] END learning_rate=0.2, max_depth=5, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 4.9min
+[CV] END learning_rate=0.2, max_depth=5, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 4.9min
+[CV] END learning_rate=0.1, max_depth=3, min_samples_split=100, n_estimators=100, subsample=1.0; total time= 1.1min
+[CV] END learning_rate=0.1, max_depth=3, min_samples_split=100, n_estimators=100, subsample=1.0; total time= 1.1min
+[CV] END learning_rate=0.1, max_depth=3, min_samples_split=100, n_estimators=100, subsample=1.0; total time= 1.1min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=200, n_estimators=300, subsample=1.0; total time= 3.3min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=200, n_estimators=300, subsample=1.0; total time= 3.2min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=200, n_estimators=300, subsample=1.0; total time= 3.2min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=200, n_estimators=300, subsample=1.0; total time=85.9min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=200, n_estimators=300, subsample=1.0; total time= 2.9min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=200, n_estimators=300, subsample=1.0; total time= 2.9min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=100, n_estimators=200, subsample=0.8; total time= 1.6min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=100, n_estimators=200, subsample=0.8; total time= 1.6min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=100, n_estimators=200, subsample=0.8; total time= 1.7min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 2.9min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 2.9min
+[CV] END learning_rate=0.2, max_depth=3, min_samples_split=100, n_estimators=300, subsample=1.0; total time= 2.9min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=200, n_estimators=100, subsample=1.0; total time= 1.6min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=200, n_estimators=100, subsample=1.0; total time= 1.5min
+[CV] END learning_rate=0.05, max_depth=5, min_samples_split=200, n_estimators=100, subsample=1.0; total time= 1.5min
+[CV] END learning_rate=0.05, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END learning_rate=0.05, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END learning_rate=0.05, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=200, n_estimators=200, subsample=1.0; total time= 1.9min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=100, n_estimators=300, subsample=0.8; total time= 2.4min
+[CV] END learning_rate=0.01, max_depth=3, min_samples_split=100, n_estimators=300, subsample=0.8; total time=14.1min

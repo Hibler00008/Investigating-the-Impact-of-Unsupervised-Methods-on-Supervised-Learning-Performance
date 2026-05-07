@@ -1,0 +1,255 @@
+Output will be saved to: C:\Users\prana\Downloads\minip\output\KMEANS_diabetes_results_20251127_112500.txt
+Timestamp: 20251127_112500
+======================================================================
+
+Dataset Shape: (768, 10)
+Removed 22 outliers using Mahalanobis distance.
+Computed class weights: {np.int64(0): np.float64(0.7589743589743589), np.int64(1): np.float64(1.4653465346534653)}
+
+✅ Preprocessing Complete!
+Training shape: (592, 9), Test shape: (154, 9)
+
+======================================================================
+PHASE 1: TRAINING BASELINE MODELS (PARALLEL)
+======================================================================
+
+######################################################################
+# Logistic Regression - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.02 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.7273
+  F1 Score:  0.7261
+  Precision: 0.7252
+  Recall:    0.7273
+
+######################################################################
+# Decision Tree - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# XGBoost - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.03 seconds
+
+Training Set Performance:
+  Accuracy:  0.7686
+  F1 Score:  0.7727
+  Precision: 0.7834
+  Recall:    0.7686
+
+Test Set Performance:
+  Accuracy:  0.6753
+  F1 Score:  0.6819
+  Precision: 0.7067
+  Recall:    0.6753
+
+######################################################################
+# AdaBoost - BASELINE
+######################################################################
+Training baseline model...
+
+######################################################################
+# Random Forest - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.25 seconds
+
+Training Set Performance:
+  Accuracy:  1.0000
+  F1 Score:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+
+Test Set Performance:
+  Accuracy:  0.7273
+  F1 Score:  0.7261
+  Precision: 0.7252
+  Recall:    0.7273
+
+######################################################################
+# Gradient Boosting - BASELINE
+######################################################################
+Training baseline model...
+
+Training completed in 0.17 seconds
+
+Training Set Performance:
+  Accuracy:  0.7956
+  F1 Score:  0.7896
+  Precision: 0.7913
+  Recall:    0.7956
+
+Test Set Performance:
+  Accuracy:  0.7532
+  F1 Score:  0.7542
+  Precision: 0.7554
+  Recall:    0.7532
+
+######################################################################
+# Logistic Regression - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# AdaBoost - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# Decision Tree - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# Gradient Boosting - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+######################################################################
+# Random Forest - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+Tuning completed in 31.57 seconds
+Best CV score: 0.7534
+
+Best parameters:
+  criterion: entropy
+  max_depth: 10
+  min_samples_leaf: 20
+  min_samples_split: 100
+
+Training Set Performance:
+  Accuracy:  0.7770
+  F1 Score:  0.7818
+  Precision: 0.7984
+  Recall:    0.7770
+
+Test Set Performance:
+  Accuracy:  0.7078
+  F1 Score:  0.7136
+  Precision: 0.7365
+  Recall:    0.7078
+
+######################################################################
+# XGBoost - HYPERPARAMETER TUNING
+######################################################################
+Tuning hyperparameters with GridSearchCV...
+
+Tuning completed in 5.14 seconds
+Best CV score: 0.7584
+
+Best parameters:
+  C: 1
+  penalty: l1
+  solver: saga
+
+Training Set Performance:
+  Accuracy:  0.7686
+  F1 Score:  0.7727
+  Precision: 0.7834
+  Recall:    0.7686
+
+Test Set Performance:
+  Accuracy:  0.6818
+  F1 Score:  0.6882
+  Precision: 0.7109
+  Recall:    0.6818
+
+######################################################################
+# Logistic Regression - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Coefficient Magnitude):
+                 feature  importance
+                 Glucose    1.061642
+                     BMI    0.760868
+                     Age    0.500212
+DiabetesPedigreeFunction    0.337125
+           BloodPressure    0.261402
+                 Insulin    0.174851
+             Pregnancies    0.170854
+               kmeans_id    0.128570
+           SkinThickness    0.007538
+
+######################################################################
+# AdaBoost - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+                 feature  importance
+                     BMI    0.274547
+                 Glucose    0.263249
+DiabetesPedigreeFunction    0.242255
+                     Age    0.139421
+           BloodPressure    0.032390
+             Pregnancies    0.021521
+                 Insulin    0.018728
+           SkinThickness    0.007888
+               kmeans_id    0.000000
+
+######################################################################
+# Decision Tree - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+                 feature  importance
+                 Glucose    0.471163
+                     BMI    0.340136
+                     Age    0.146633
+DiabetesPedigreeFunction    0.042068
+             Pregnancies    0.000000
+                 Insulin    0.000000
+           SkinThickness    0.000000
+           BloodPressure    0.000000
+               kmeans_id    0.000000
+
+######################################################################
+# Random Forest - FEATURE IMPORTANCE
+######################################################################
+
+######################################################################
+# XGBoost - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+                 feature  importance
+                 Glucose    0.401762
+                     Age    0.187166
+                     BMI    0.168761
+               kmeans_id    0.070246
+DiabetesPedigreeFunction    0.063351
+             Pregnancies    0.044868
+                 Insulin    0.025042
+           SkinThickness    0.020926
+           BloodPressure    0.017878
+
+######################################################################
+# Gradient Boosting - FEATURE IMPORTANCE
+######################################################################
+
+Top 10 Most Important Features (Feature Importance):
+                 feature  importance
+                 Glucose    0.244450
+                     BMI    0.133786
+                     Age    0.121257
+             Pregnancies    0.106002
+               kmeans_id    0.094402
+DiabetesPedigreeFunction    0.079203
+           SkinThickness    0.078350
+                 Insulin    0.075278
+           BloodPressure    0.067272
